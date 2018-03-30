@@ -6,6 +6,8 @@ import {
 } from 'reactstrap';
 import _ from 'lodash';
 
+import MadlibContent from './madlib_content';
+
 function MadlibInput(props) {
     return (
         <Col md="3" className="input-wrapper">
@@ -59,7 +61,7 @@ class MadlibForm extends Component {
         event.preventDefault();
     }.bind(this);
 
-    habdleClick = function() {
+    handleClick = function() {
         this.setState({
             completedForm: false,
             color: '',
@@ -75,9 +77,9 @@ class MadlibForm extends Component {
 
     renderButton = function() {
         if(this.state.completedForm) {
-            return <a className="clear-button" onClick={this.handleClick}> Clear Mad Lib </a>
+            return <a className="clear-button" onClick={this.handleClick}>Clear Mad Lib</a>
         }
-         return <input type="submit" className="generate-button" value="Generate Mad Lib" /> 
+        return <input type="submit" className="generate-button" value="Generate Mad Lib" /> 
     }
 
     render() {
@@ -92,7 +94,6 @@ class MadlibForm extends Component {
             {placeholder: 'Noun', prop: 'nounOne', state: this.state.nounOne},
             {placeholder: 'Number', prop: 'numberOne', state: this.state.numberOne},
             {placeholder: 'Number', prop: 'numberTwo', state: this.state.numberTwo},
-
         ]
 
       return (
@@ -112,6 +113,7 @@ class MadlibForm extends Component {
                         </Col>
                     </Row>
                 </form>
+                <MadlibContent data={this.state}/>
             </Card>
           </div>
         
